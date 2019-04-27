@@ -4,20 +4,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Agenda {
-    private List<AgendaMonth> agendaMonths;
+    private List<Task> tasks;
     public Agenda()
     {
-        this.agendaMonths = new ArrayList<AgendaMonth>();
+        this.tasks = new ArrayList<Task>();
     }
-    public Agenda(List<AgendaMonth> agendaMonths)
+    public Agenda(List<Task> tasks)
     {
-        this.agendaMonths = agendaMonths;
+        this.tasks = tasks;
     }
-    public List<AgendaMonth> getAgendaMonths() {
-        return agendaMonths;
+    public List<Task> getTasks() {
+        return tasks;
     }
 
-    public void setAgendaMonths(List<AgendaMonth> agendaMonths) {
-        this.agendaMonths = agendaMonths;
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
     }
 }

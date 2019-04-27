@@ -6,11 +6,21 @@ public abstract class Task {
     protected String adress, taskId, name;
     protected int minutesDuration;
     protected Date taskDate;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     Task(String name, String adress, String taskId, int minutesDuration, Date taskDate)
     {
         this.name = name;
         this.adress = adress;
         this.taskId = taskId;
+
         this.minutesDuration = minutesDuration;
         this.taskDate = taskDate;
     }

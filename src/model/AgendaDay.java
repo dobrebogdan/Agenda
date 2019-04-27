@@ -1,5 +1,6 @@
-package model;
+//not usefull anymore
 
+package model;
 import java.util.ArrayList;
 import java.util.List;
 

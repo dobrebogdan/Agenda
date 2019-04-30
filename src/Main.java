@@ -1,35 +1,53 @@
-import model.MeetingTask;
-import model.SpecialTask;
-import model.Task;
-import service.AgendaService;
+import model.*;
+import service.*;
 
 import java.util.*;
 
 public class Main {
-    public static void main(String [] args)
-    {
-        Calendar myCalendar = new GregorianCalendar(2019,5,28,1,1,1);
-        Date date1 = myCalendar.getTime();
-        SpecialTask specialTask1 = new SpecialTask("Plimba cainele",
-                "Plimba cainele","Parcul Cismigiu","#4456", 30, date1);
-        Calendar myCalendar2 = new GregorianCalendar(2019,6,28,1,1,1);
-        Date date2 = myCalendar2.getTime();
-        MeetingTask meetingTask1 = new MeetingTask("Intalnire de afaceri", "Bitdefender",
-                "Lipscani nr 6","#4457", 90, date2);
-        AgendaService.addTask(specialTask1);
-        AgendaService.removeTask(specialTask1);
-        AgendaService.addTask(specialTask1);
-        AgendaService.addTask(meetingTask1);
-        System.out.println("1 "+AgendaService.getTasksOnDate(date1).get(0).getTaskId());
-        System.out.println("2 "+AgendaService.getTasksAfterDate(date1).get(0).getTaskId());
-        System.out.println("3 "+AgendaService.getTasksBeforeDate(date2).get(0).getTaskId());
-        System.out.println("4 "+AgendaService.getTaskById("#4456").getTaskId());
-        AgendaService.removeTaskById("#4456");
+    public static void main(String [] args) {
+        ArrayList<AppointmentTask> appointmentTasks = new ArrayList<AppointmentTask>();
+        ArrayList<MeetingTask> meetingTasks = new ArrayList<MeetingTask>();
+        ArrayList<ExamTask> examTasks = new ArrayList<ExamTask>();
+        ArrayList<CourseTask> courseTasks = new ArrayList<CourseTask>();
+        String path = "C:\\Users\\Bogdan\\Desktop\\Personal_Agenda\\data\\";
+        try {
+
+            appointmentTasks = FileService.readAppointmentTasks(path + "AppointmentTasks.csv");
+            examTasks = FileService.readExamTasks(path + "ExamTasks.csv");
+            courseTasks = FileService.readCourseTasks(path + "CourseTasks.csv");
+            meetingTasks = FileService.readMeetingTasks(path + "MeetingTasks.csv");
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();;
+        }
+        AgendaService.addTask(meetingTasks.get(0));
+        AgendaService.removeTask(meetingTasks.get(0));
+        AgendaService.addTask(courseTasks.get(0));
+        AgendaService.addTask(courseTasks.get(1));
+        AgendaService.addTask(meetingTasks.get(0));
+        System.out.println(courseTasks.get(0).getTaskDate());
+        System.out.println("1 " + AgendaService.getTasksOnDate(courseTasks.get(0).getTaskDate()).get(0).getTaskId());
+        //System.out.println("2 " + AgendaService.getTasksAfterDate(courseTasks.get(0).getTaskDate()).get(0).getTaskId());
+        //System.out.println("3 " + AgendaService.getTasksBeforeDate(courseTasks.get(1).getTaskDate()).get(0).getTaskId());
+        //System.out.println("4 " + AgendaService.getTaskById(courseTasks.get(1).getTaskId()).getTaskId());
+
+        AgendaService.removeTaskById(courseTasks.get(0).getTaskId());
         AgendaService.removeAllTasks();
         List<Task> tasks = new ArrayList<Task>();
+        tasks.add(courseTasks.get(0));
+        tasks.add(courseTasks.get(1));
         AgendaService.addTasks(tasks);
-        tasks.add(specialTask1);
-        tasks.add(meetingTask1);
         AgendaService.removeTasks(tasks);
+        try {
+            System.out.println(meetingTasks.size());
+            FileService.recordMeetingTasks(path + "MeetingTasks.csv", meetingTasks);
+            FileService.recordExamTasks(path+"ExamTasks.csv", examTasks);
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
+
     }
 }

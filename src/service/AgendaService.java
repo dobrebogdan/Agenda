@@ -2,9 +2,30 @@ package service;
 
 import model.*;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
+
+class SortByDate implements Comparator<Task>
+{
+    // Used for sorting in ascending order of
+    // roll number
+    public int compare(Task a, Task b)
+    {
+        if(a.getTaskDate().before(b.getTaskDate()))
+        {
+            return -1;
+        }
+        else {
+            if (a.getTaskDate().after(b.getTaskDate()))
+            {
+                return 1;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+}
 public class AgendaService {
     private static Agenda agenda = new Agenda();
 
@@ -94,6 +115,7 @@ public class AgendaService {
     {
         LoggerService.writeLog("Function addTask");
         List<Task> tasks = agenda.getTasks();
+        Collections.sort(tasks, new SortByDate());
         tasks.add(task);
 
     }

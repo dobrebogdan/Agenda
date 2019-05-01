@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class FileService {
-    public static String datePattern = "dd-MM-YY";
+    public static String datePattern = "dd-MM-yyyy";
     public static String prettifyStr(String ... strings)
     {
         String prettyStr = "";

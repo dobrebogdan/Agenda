@@ -3,13 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="77d5eb19-8a78-4da4-ab43-ae781fcf8805" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/AppointmentTasks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/AppointmentTasks.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/CourseTasks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/CourseTasks.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/ExamTasks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/ExamTasks.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/MeetingTasks.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/MeetingTasks.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/Logs.csv" beforeDir="false" afterPath="$PROJECT_DIR$/data/Logs.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/Personal_Agenda/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/Personal_Agenda/Main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/service/AgendaService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/AgendaService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/service/FileService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/service/FileService.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -24,23 +21,25 @@
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="MeetingTasks.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/MeetingTasks.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="17">
               <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
             </state>
           </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
         </entry>
       </file>
-      <file leaf-file-name="FileService.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FileService.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/service/FileService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="311">
-              <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
+            <state relative-caret-position="136">
+              <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#8336#8348#0" expanded="true" />
+                <element signature="e#9054#9067#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -48,20 +47,20 @@
       </file>
       <file leaf-file-name="Logs.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/Logs.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="204">
               <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
             </state>
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
       <file leaf-file-name="LoggerService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/LoggerService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="323">
               <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -72,23 +71,28 @@
       </file>
       <file leaf-file-name="CourseTasks.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/CourseTasks.csv">
-          <provider selected="true" editor-type-id="csv-text-editor">
-            <state>
-              <caret column="75" selection-start-column="75" selection-end-column="75" />
-            </state>
-          </provider>
           <provider editor-type-id="csv-table-editor">
             <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
+          <provider selected="true" editor-type-id="csv-text-editor">
+            <state>
+              <caret column="75" lean-forward="true" selection-start-column="75" selection-end-column="75" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Main.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="158">
-              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            <state relative-caret-position="190">
+              <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#189#206#0" expanded="true" />
+                <element signature="e#269#282#0" expanded="true" />
+                <element signature="e#339#349#0" expanded="true" />
+                <element signature="e#410#422#0" expanded="true" />
+                <element signature="e#1901#1907#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -97,7 +101,7 @@
       <file leaf-file-name="AgendaService.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/service/AgendaService.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
+            <state relative-caret-position="1705">
               <caret line="132" selection-start-line="132" selection-end-line="132" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -117,25 +121,25 @@
       </file>
       <file leaf-file-name="ExamTasks.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/ExamTasks.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="17">
               <caret line="1" column="75" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
             </state>
           </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-          </provider>
         </entry>
       </file>
       <file leaf-file-name="AppointmentTasks.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/AppointmentTasks.csv">
+          <provider editor-type-id="csv-table-editor">
+            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+          </provider>
           <provider selected="true" editor-type-id="csv-text-editor">
             <state relative-caret-position="17">
               <caret line="1" column="96" selection-start-line="1" selection-start-column="96" selection-end-line="1" selection-end-column="96" />
             </state>
-          </provider>
-          <provider editor-type-id="csv-table-editor">
-            <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
           </provider>
         </entry>
       </file>
@@ -172,12 +176,12 @@
         <option value="$PROJECT_DIR$/data/MeetingTasks.csv" />
         <option value="$PROJECT_DIR$/data/ExamTasks.csv" />
         <option value="$PROJECT_DIR$/data/AppointmentTasks.csv" />
-        <option value="$PROJECT_DIR$/data/CourseTasks.csv" />
-        <option value="$PROJECT_DIR$/src/service/FileService.java" />
         <option value="$PROJECT_DIR$/data/Logs.csv" />
         <option value="$PROJECT_DIR$/src/service/LoggerService.java" />
         <option value="$PROJECT_DIR$/src/service/AgendaService.java" />
         <option value="$PROJECT_DIR$/src/Main.java" />
+        <option value="$PROJECT_DIR$/data/CourseTasks.csv" />
+        <option value="$PROJECT_DIR$/src/service/FileService.java" />
       </list>
     </option>
   </component>
@@ -190,7 +194,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="10" />
     <option name="y" value="20" />
     <option name="width" value="1346" />
@@ -201,6 +205,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,8 +240,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
       <pane id="AndroidView" />
     </panes>
   </component>
@@ -340,11 +344,12 @@
       <workItem from="1556531264331" duration="1331000" />
       <workItem from="1556574220338" duration="4087000" />
       <workItem from="1556660862291" duration="1888000" />
+      <workItem from="1556704988715" duration="445000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="55766000" />
+    <option name="totallyTimeSpent" value="56381000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -360,7 +365,7 @@
       <window_info anchor="right" id="Maven Projects" order="3" />
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.32114467" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32114467" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
@@ -471,6 +476,11 @@
           <caret line="27" column="30" selection-start-line="27" selection-start-column="30" selection-end-line="27" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#189#206#0" expanded="true" />
+            <element signature="e#269#282#0" expanded="true" />
+            <element signature="e#339#349#0" expanded="true" />
+            <element signature="e#410#422#0" expanded="true" />
+            <element signature="e#1901#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -488,6 +498,11 @@
           <caret line="28" selection-start-line="28" selection-end-line="28" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#189#206#0" expanded="true" />
+            <element signature="e#269#282#0" expanded="true" />
+            <element signature="e#339#349#0" expanded="true" />
+            <element signature="e#410#422#0" expanded="true" />
+            <element signature="e#1901#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -589,6 +604,11 @@
           <caret line="3" column="44" selection-start-line="3" selection-start-column="44" selection-end-line="3" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#189#206#0" expanded="true" />
+            <element signature="e#269#282#0" expanded="true" />
+            <element signature="e#339#349#0" expanded="true" />
+            <element signature="e#410#422#0" expanded="true" />
+            <element signature="e#1901#1907#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -685,41 +705,41 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/ExamTasks.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
-        </state>
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="75" selection-start-line="1" selection-start-column="75" selection-end-line="1" selection-end-column="75" />
         </state>
       </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="7" selection-start-line="1" selection-start-column="7" selection-end-line="1" selection-end-column="7" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/AppointmentTasks.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="103" selection-start-line="1" selection-start-column="103" selection-end-line="1" selection-end-column="103" />
-        </state>
-      </provider>
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="96" selection-start-line="1" selection-start-column="96" selection-end-line="1" selection-end-column="96" />
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/MeetingTasks.csv">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="17">
-          <caret line="1" column="58" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
+          <caret line="1" column="103" selection-start-line="1" selection-start-column="103" selection-end-line="1" selection-end-column="103" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/MeetingTasks.csv">
       <provider selected="true" editor-type-id="csv-text-editor">
         <state relative-caret-position="17">
           <caret line="1" column="64" selection-start-line="1" selection-start-column="64" selection-end-line="1" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="58" selection-start-line="1" selection-start-column="58" selection-end-line="1" selection-end-column="58" />
         </state>
       </provider>
     </entry>
@@ -730,34 +750,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/service/FileService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="77" column="39" selection-start-line="77" selection-start-column="39" selection-end-line="77" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/CourseTasks.csv">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state>
-          <caret column="75" selection-start-column="75" selection-end-column="75" />
-        </state>
-      </provider>
-      <provider editor-type-id="csv-table-editor">
-        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/LoggerService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="323">
           <caret line="21" column="60" selection-start-line="21" selection-start-column="60" selection-end-line="21" selection-end-column="60" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -765,9 +760,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/Logs.csv">
+      <provider editor-type-id="csv-table-editor">
+        <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
+      </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/service/AgendaService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
+        <state relative-caret-position="1705">
           <caret line="132" selection-start-line="132" selection-end-line="132" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -775,22 +780,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/Logs.csv">
-      <provider selected="true" editor-type-id="csv-text-editor">
-        <state relative-caret-position="204">
-          <caret line="12" column="30" selection-start-line="12" selection-start-column="30" selection-end-line="12" selection-end-column="30" />
+    <entry file="file://$PROJECT_DIR$/src/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="190">
+          <caret line="30" column="44" selection-start-line="30" selection-start-column="44" selection-end-line="30" selection-end-column="44" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#189#206#0" expanded="true" />
+            <element signature="e#269#282#0" expanded="true" />
+            <element signature="e#339#349#0" expanded="true" />
+            <element signature="e#410#422#0" expanded="true" />
+            <element signature="e#1901#1907#0" expanded="true" />
+          </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/CourseTasks.csv">
       <provider editor-type-id="csv-table-editor">
         <state showInfoPanel="true" fixedHeaders="false" rowLines="3" />
       </provider>
+      <provider selected="true" editor-type-id="csv-text-editor">
+        <state>
+          <caret column="75" lean-forward="true" selection-start-column="75" selection-end-column="75" />
+        </state>
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="1" selection-start-line="1" selection-start-column="1" selection-end-line="1" selection-end-column="1" />
+        </state>
+      </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Main.java">
+    <entry file="file://$PROJECT_DIR$/src/service/FileService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        <state relative-caret-position="136">
+          <caret line="14" column="50" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#8336#8348#0" expanded="true" />
+            <element signature="e#9054#9067#0" expanded="true" />
           </folding>
         </state>
       </provider>

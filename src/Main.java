@@ -28,9 +28,9 @@ public class Main {
         AgendaService.addTask(meetingTasks.get(0));
         System.out.println(courseTasks.get(0).getTaskDate());
         System.out.println("1 " + AgendaService.getTasksOnDate(courseTasks.get(0).getTaskDate()).get(0).getTaskId());
-        //System.out.println("2 " + AgendaService.getTasksAfterDate(courseTasks.get(0).getTaskDate()).get(0).getTaskId());
-        //System.out.println("3 " + AgendaService.getTasksBeforeDate(courseTasks.get(1).getTaskDate()).get(0).getTaskId());
-        //System.out.println("4 " + AgendaService.getTaskById(courseTasks.get(1).getTaskId()).getTaskId());
+        System.out.println("2 " + AgendaService.getTasksAfterDate(courseTasks.get(0).getTaskDate()).get(0).getTaskId());
+        System.out.println("3 " + AgendaService.getTasksBeforeDate(courseTasks.get(1).getTaskDate()).get(0).getTaskId());
+        System.out.println("4 " + AgendaService.getTaskById(courseTasks.get(1).getTaskId()).getTaskId());
 
         AgendaService.removeTaskById(courseTasks.get(0).getTaskId());
         AgendaService.removeAllTasks();
@@ -40,7 +40,6 @@ public class Main {
         AgendaService.addTasks(tasks);
         AgendaService.removeTasks(tasks);
         try {
-            System.out.println(meetingTasks.size());
             FileService.recordMeetingTasks(path + "MeetingTasks.csv", meetingTasks);
             FileService.recordExamTasks(path+"ExamTasks.csv", examTasks);
         }

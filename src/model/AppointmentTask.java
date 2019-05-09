@@ -1,5 +1,7 @@
 package model;
 
+import service.FileService;
+
 import java.util.Date;
 
 public class AppointmentTask extends Task {
@@ -9,6 +11,16 @@ public class AppointmentTask extends Task {
         this.hospitalName = hospitalName;
         this.decription = description;
         this.doctorName = doctorName;
+    }
+    public String getStringObject() {
+        return FileService.prettifyStr(getName(), getHospitalName(), getDecription(),
+                getAdress(), getTaskId(), Integer.toString(getMinutesDuration()),
+                getStrDate(FileService.datePattern));
+    }
+    public String getStringObjectDB()
+    {
+        return FileService.prettifyStrDB(getName(), getHospitalName(), getDoctorName(), getDecription(),
+                getAdress(), getTaskId(), Integer.toString(getMinutesDuration()), getStrDate(FileService.datePattern));
     }
     public String getHospitalName() {
         return hospitalName;

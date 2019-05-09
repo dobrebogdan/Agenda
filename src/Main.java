@@ -2,25 +2,16 @@ import model.*;
 import service.*;
 
 import java.util.*;
+import java.sql.*;
 
 public class Main {
     public static void main(String [] args) {
-        ArrayList<AppointmentTask> appointmentTasks = new ArrayList<AppointmentTask>();
-        ArrayList<MeetingTask> meetingTasks = new ArrayList<MeetingTask>();
-        ArrayList<ExamTask> examTasks = new ArrayList<ExamTask>();
-        ArrayList<CourseTask> courseTasks = new ArrayList<CourseTask>();
-        String path = "C:\\Users\\Bogdan\\Desktop\\Personal_Agenda\\data\\";
-        try {
+        DBService.init();
+        ArrayList<Task> appointmentTasks = DBService.readTasks("Appointment_tasks", "AppointmentTask");
+        ArrayList<Task> meetingTasks = DBService.readTasks("Meeting_Tasks", "MeetingTask");
+        ArrayList<Task> examTasks = DBService.readTasks("Exam_tasks", "ExamTask");
+        ArrayList<Task> courseTasks = DBService.readTasks("Course_tasks", "CourseTask");
 
-            appointmentTasks = FileService.readAppointmentTasks(path + "AppointmentTasks.csv");
-            examTasks = FileService.readExamTasks(path + "ExamTasks.csv");
-            courseTasks = FileService.readCourseTasks(path + "CourseTasks.csv");
-            meetingTasks = FileService.readMeetingTasks(path + "MeetingTasks.csv");
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();;
-        }
         AgendaService.addTask(meetingTasks.get(0));
         AgendaService.removeTask(meetingTasks.get(0));
         AgendaService.addTask(courseTasks.get(0));
@@ -39,9 +30,23 @@ public class Main {
         tasks.add(courseTasks.get(1));
         AgendaService.addTasks(tasks);
         AgendaService.removeTasks(tasks);
-        try {
-            FileService.recordMeetingTasks(path + "MeetingTasks.csv", meetingTasks);
-            FileService.recordExamTasks(path+"ExamTasks.csv", examTasks);
+
+        try
+        {
+
+
+            /*String strStatement = "select * from students";
+            ResultSet resultSet= statement.executeQuery(strStatement);
+            while(resultSet.next())
+            {
+                System.out.println(resultSet.getString("nAmE"));
+            }*/
+
+            //DBService.deleteRow("Exam_tasks","000h");
+            ArrayList<Task> tasksdb = DBService.readTasks("Appointment_tasks", "AppointmentTask");
+            System.out.println(tasksdb.get(1).getName());
+            //DBService.createAppointmentTable("Appointment_Tasks");
+            DBService.addTaskToTable("Exam_Tasks", (Task) examTasks.get(1), "ExamTask");
         }
         catch(Exception e)
         {

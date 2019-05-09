@@ -28,6 +28,19 @@ public class FileService {
         prettyStr += "\n";
         return prettyStr;
     }
+    public static String prettifyStrDB(String ... strings)
+    {
+        String prettyStr = "'";
+        for(int i = 0; i < strings.length; i++) {
+            prettyStr = prettyStr + strings[i];
+            prettyStr += "'";
+            if (i != strings.length - 1) {
+                prettyStr = prettyStr + ", '";
+            }
+        }
+        return prettyStr;
+    }
+
     public static ArrayList<String []> readLinesFromFile(String csvFile)
     {
         BufferedReader br = null;
@@ -84,10 +97,10 @@ public class FileService {
             e.printStackTrace();
         }
     }
-    public static ArrayList<AppointmentTask> readAppointmentTasks(String csvFile) throws ParseException
+    public static ArrayList<Task> readAppointmentTasks(String csvFile) throws ParseException
     {
         ArrayList<String[]> lines = readLinesFromFile(csvFile);
-        ArrayList<AppointmentTask> appointmentTasks = new ArrayList<AppointmentTask>();
+        ArrayList<Task> appointmentTasks = new ArrayList<Task>();
         SimpleDateFormat SimpleDateFormater = new SimpleDateFormat(datePattern);
         for(int i = 0; i < lines.size(); i++)
         {
@@ -100,56 +113,40 @@ public class FileService {
         return appointmentTasks;
     }
 
-    public static void writeAppointmentTask(FileWriter fileWriter, AppointmentTask currTask)
+    public static void writeTask(FileWriter fileWriter, Task currTask, String type)
     {
         try {
-            Date date = currTask.getTaskDate();
-            String strDate = new SimpleDateFormat(datePattern).format(date);
-            fileWriter.write(prettifyStr(currTask.getName(), currTask.getHospitalName(), currTask.getDecription(),
-                             currTask.getAdress(), currTask.getTaskId(), Integer.toString(currTask.getMinutesDuration()),
-                             strDate));
-            fileWriter.flush();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    public static void recordAppointmentTasks(String csvFile, ArrayList<AppointmentTask> appointmentTasks)
-    {
-        try {
-            FileWriter fileWriter = new FileWriter(csvFile, false);
-            for (AppointmentTask appointmentTask : appointmentTasks) {
-                writeAppointmentTask(fileWriter, appointmentTask);
+            switch (type) {
+                case "CourseTask":
+                    CourseTask courseTask = (CourseTask) currTask;
+                    fileWriter.write(courseTask.getStringObject());
+                    break;
+                case "ExamTask":
+                    ExamTask examTask = (ExamTask) currTask;
+                    fileWriter.write(examTask.getStringObject());
+                    break;
+                case "AppointmentTask":
+                    AppointmentTask appointmentTask = (AppointmentTask) currTask;
+                    fileWriter.write(appointmentTask.getStringObject());
+                    break;
+                case "MeetingTask":
+                    MeetingTask meetingTask = (MeetingTask) currTask;
+                    fileWriter.write(meetingTask.getStringObject());
+                    break;
+
             }
-            fileWriter.close();
         }
         catch(Exception e)
         {
             e.printStackTrace();
         }
     }
-    public static void writeCourseTask(FileWriter fileWriter, CourseTask currTask)
-    {
-        try {
-            Date date = currTask.getTaskDate();
-            String strDate = new SimpleDateFormat(datePattern).format(date);
-            fileWriter.write(prettifyStr(currTask.getName(), currTask.getTeacherName(), currTask.getCourseName(),
-                    currTask.getAdress(), currTask.getTaskId(), Integer.toString(currTask.getMinutesDuration()),
-                    strDate));
-            fileWriter.flush();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    public static void recordCourseTasks(String csvFile, ArrayList<CourseTask> courseTasks)
+    public static void recordTasks(String csvFile, ArrayList<Task> tasks, String type)
     {
         try {
             FileWriter fileWriter = new FileWriter(csvFile, false);
-            for (CourseTask courseTask : courseTasks) {
-                writeCourseTask(fileWriter, courseTask);
+            for (Task currTask : tasks) {
+                writeTask(fileWriter, currTask, type);
 
             }
             fileWriter.close();
@@ -159,70 +156,11 @@ public class FileService {
             e.printStackTrace();
         }
     }
-    public static void writeExamTask(FileWriter fileWriter, ExamTask currTask)
-    {
-        try {
-            Date date = currTask.getTaskDate();
-            String strDate = new SimpleDateFormat(datePattern).format(date);
-            fileWriter.write(prettifyStr(currTask.getName(), currTask.getTeacherName(), currTask.getCourseName(),
-                    currTask.getAdress(), currTask.getTaskId(), Integer.toString(currTask.getMinutesDuration()),
-                    strDate));
-            fileWriter.flush();
 
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    public static void recordExamTasks(String csvFile, ArrayList<ExamTask> examTasks)
-    {
-        try {
-            FileWriter fileWriter = new FileWriter(csvFile, false);
-            for (ExamTask examTask : examTasks) {
-                writeExamTask(fileWriter, examTask);
-            }
-            fileWriter.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    public static void writeMeetingTask(FileWriter fileWriter, MeetingTask currTask)
-    {
-        try {
-            Date date = currTask.getTaskDate();
-            String strDate = new SimpleDateFormat(datePattern).format(date);
-            fileWriter.write(prettifyStr(currTask.getName(), currTask.getCompanyName(),
-                    currTask.getAdress(), currTask.getTaskId(), Integer.toString(currTask.getMinutesDuration()),
-                    strDate));
-            fileWriter.flush();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    public static void recordMeetingTasks(String csvFile, ArrayList<MeetingTask> meetingTasks)
-    {
-        try {
-            FileWriter fileWriter = new FileWriter(csvFile, false);
-            for (MeetingTask meetingTask : meetingTasks) {
-                writeMeetingTask(fileWriter, meetingTask);
-            }
-            //fileWriter.flush();
-            fileWriter.close();
-        }
-        catch(Exception e)
-        {
-            e.printStackTrace();
-        }
-    }
-    public static ArrayList<ExamTask> readExamTasks(String csvFile) throws ParseException
+    public static ArrayList<Task> readExamTasks(String csvFile) throws ParseException
     {
         ArrayList<String[]> lines = readLinesFromFile(csvFile);
-        ArrayList<ExamTask> examTasks = new ArrayList<ExamTask>();
+        ArrayList<Task> examTasks = new ArrayList<Task>();
         SimpleDateFormat SimpleDateFormater = new SimpleDateFormat(datePattern);
         for(int i = 0; i < lines.size(); i++)
         {
@@ -233,10 +171,10 @@ public class FileService {
         }
         return examTasks;
     }
-    public static ArrayList<CourseTask> readCourseTasks(String csvFile) throws ParseException
+    public static ArrayList<Task> readCourseTasks(String csvFile) throws ParseException
     {
         ArrayList<String[]> lines = readLinesFromFile(csvFile);
-        ArrayList<CourseTask> courseTasks = new ArrayList<CourseTask>();
+        ArrayList<Task> courseTasks = new ArrayList<Task>();
         SimpleDateFormat SimpleDateFormater = new SimpleDateFormat(datePattern);
         for(int i = 0; i < lines.size(); i++)
         {
@@ -247,10 +185,10 @@ public class FileService {
         }
         return courseTasks;
     }
-    public static ArrayList<MeetingTask> readMeetingTasks(String csvFile) throws ParseException
+    public static ArrayList<Task> readMeetingTasks(String csvFile) throws ParseException
     {
         ArrayList<String[]> lines = readLinesFromFile(csvFile);
-        ArrayList<MeetingTask> meetingTasks = new ArrayList<MeetingTask>();
+        ArrayList<Task> meetingTasks = new ArrayList<Task>();
         SimpleDateFormat SimpleDateFormater = new SimpleDateFormat(datePattern);
         for(int i = 0; i < lines.size(); i++)
         {

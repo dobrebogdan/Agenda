@@ -1,12 +1,20 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+import static service.FileService.datePattern;
 
 public abstract class Task {
     protected String adress, taskId, name;
     protected int minutesDuration;
     protected Date taskDate;
 
+    public String getStrDate(String dateFormat)
+    {
+        String strDate = new SimpleDateFormat(datePattern).format(taskDate);
+        return strDate;
+    }
     public String getName() {
         return name;
     }

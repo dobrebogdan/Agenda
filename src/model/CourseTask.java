@@ -1,5 +1,8 @@
 package model;
 
+import service.FileService;
+
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class CourseTask extends Task{
@@ -10,6 +13,20 @@ public class CourseTask extends Task{
         this.teacherName = teacherName;
         this.courseName = courseName;
 
+    }
+
+    public String getStringObject()
+    {
+        return FileService.prettifyStr(getName(), getTeacherName(), getCourseName(),
+                getAdress(), getTaskId(), Integer.toString(getMinutesDuration()),
+                getStrDate(FileService.datePattern));
+    }
+
+    public String getStringObjectDB()
+    {
+        return FileService.prettifyStrDB(getName(), getTeacherName(), getCourseName(),
+                getAdress(), getTaskId(), Integer.toString(getMinutesDuration()),
+                getStrDate(FileService.datePattern));
     }
     public String getTeacherName() {
         return teacherName;

@@ -1,3 +1,4 @@
+import gui.UI;
 import model.*;
 import service.*;
 
@@ -30,7 +31,10 @@ public class Main {
         tasks.add(courseTasks.get(1));
         AgendaService.addTasks(tasks);
         AgendaService.removeTasks(tasks);
-
+        AgendaService.addTasks(courseTasks);
+        AgendaService.addTasks(examTasks);
+        AgendaService.addTasks(meetingTasks);
+        AgendaService.addTasks(appointmentTasks);
         try
         {
 
@@ -46,7 +50,8 @@ public class Main {
             ArrayList<Task> tasksdb = DBService.readTasks("Appointment_tasks", "AppointmentTask");
             System.out.println(tasksdb.get(1).getName());
             //DBService.createAppointmentTable("Appointment_Tasks");
-            DBService.addTaskToTable("Exam_Tasks", (Task) examTasks.get(1), "ExamTask");
+            //DBService.addTaskToTable("Exam_Tasks", (Task) examTasks.get(1), "ExamTask");
+            UI.startUI();
         }
         catch(Exception e)
         {

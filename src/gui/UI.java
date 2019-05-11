@@ -1,6 +1,7 @@
 package gui;
 import model.*;
 import service.AgendaService;
+import service.DBService;
 
 import javax.swing.*;
 import java.awt.*;
@@ -189,10 +190,8 @@ public class UI {
                 ActionListener comuteTo2 = new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        System.out.println("*");
                         mainFrame.getContentPane().removeAll();
                         mainFrame.repaint();
-                        System.out.println("#");
                         startSecondaryWindow(tasks);
                     }
                 };
@@ -234,6 +233,7 @@ public class UI {
                     System.out.println(currId);
                     AgendaService.removeTaskById(currId);
                     System.out.println(AgendaService.getAgenda().getTasks().size());
+                    DBService.rewriteDB();
                 }
                 catch(Exception exceptie)
                 {
@@ -300,6 +300,7 @@ public class UI {
                                     line[3], Integer.parseInt(line[4]),
                                     SimpleDateFormater.parse(line[5]));
                             AgendaService.addTask(meetingTask);
+                            break;
                         }
                     }
                 }
@@ -307,7 +308,7 @@ public class UI {
                 {
                     exceptie.printStackTrace();
                 }
-
+                DBService.rewriteDB();
             }
         };
 
@@ -360,18 +361,5 @@ public class UI {
 
         startMainWindow(tasks);
         //System.out.println("**");
-    }
-    static void SimpleJButton(){
-        JFrame f=new JFrame("Button Example");
-        JButton b=new JButton("Play");
-        b.setBounds(100,100,140, 40);
-        f.add(b);
-        f.setSize(300,400);
-        f.setLayout(null);
-        f.setVisible(true);
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    }
-    public static void main(String[] args) {
-        SimpleJButton();
     }
 }

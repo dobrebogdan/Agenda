@@ -61,12 +61,23 @@ public class UI {
                 int height = (int)screenSize.getHeight() - 50;
 
                 JTextArea textArea = new JTextArea("TASKS\n\n" + tasksText);
+
                 textArea.setColumns(50);
                 textArea.setSize(width,height);
                 textArea.setLineWrap(true);
                 textArea.setRows(5);
                 textArea.setWrapStyleWord(true);
                 textArea.setEditable(false);
+                textArea.setWrapStyleWord(true);
+                textArea.setEditable(false);
+                textArea.setPreferredSize(new Dimension(width, height));
+
+                JScrollPane textScrollPane = new JScrollPane(textArea, JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,
+                        JScrollPane.HORIZONTAL_SCROLLBAR_ALWAYS);
+                textScrollPane.setSize(width,height/2);
+                textScrollPane.setPreferredSize(new Dimension(width, height/2));
+                textScrollPane.setVisible(true);
+
 
                 JTextField filter = new JTextField(15);
                 filter.setSize(1000, 100);
@@ -203,7 +214,11 @@ public class UI {
                 mainFrame.add(fil2);
                 mainFrame.add(fil3);
                 mainFrame.add(fil4);
-                mainFrame.add(textArea);
+
+                mainFrame.add(textScrollPane, BorderLayout.CENTER);
+                textArea.setVisible(true);
+                textScrollPane.setVisible(true);
+                //mainFrame.add(textArea);
                 mainFrame.add(btn1);
                 mainFrame.add(btn2);
                 mainFrame.setVisible(true);
@@ -248,6 +263,7 @@ public class UI {
         remBtn.setSize(0,height);
 
         remBtn.addActionListener(idFieldListener);
+
 
         JTextArea addTaskText = new JTextArea("Add the task in csv format in the first box and the task type in the second");
         addTaskText.setSize(width, 100);

@@ -7,7 +7,7 @@ import java.util.*;
 class SortByDate implements Comparator<Task>
 {
     // Used for sorting in ascending order of
-    // roll number
+    // date
     public int compare(Task a, Task b)
     {
         if(a.getTaskDate().before(b.getTaskDate()))
@@ -93,6 +93,7 @@ public class AgendaService {
         for (int k = 0; k < tasks.size(); k++) {
             if (tasks.get(k).getTaskId().equals(task.getTaskId())) {
                 tasks.remove(k);
+                break;
             }
         }
     }
@@ -152,6 +153,5 @@ public class AgendaService {
         Task searchedTask = getTaskById(searchedId);
         removeTask(searchedTask);
     }
-
 
 }

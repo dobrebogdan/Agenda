@@ -7,6 +7,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -208,7 +210,15 @@ public class UI {
                 };
                 btn2.addActionListener(comuteTo2);
 
-                //textArea.setText("DA");
+                mainFrame.addWindowListener(new WindowAdapter()
+                {
+                    @Override
+                    public void windowClosing(WindowEvent e)
+                    {
+                        DBService.dbthreadContinue = false;
+                        e.getWindow().dispose();
+                    }
+                });
                 mainFrame.add(filter);
                 mainFrame.add(fil1);
                 mainFrame.add(fil2);
@@ -244,10 +254,7 @@ public class UI {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String currId = idField.getText();
-                    System.out.println(AgendaService.getAgenda().getTasks().size());
-                    System.out.println(currId);
                     AgendaService.removeTaskById(currId);
-                    System.out.println(AgendaService.getAgenda().getTasks().size());
                     DBService.rewriteDB();
                 }
                 catch(Exception exceptie)
@@ -356,6 +363,15 @@ public class UI {
         };
         btn2.addActionListener(comuteTo2);
 
+        mainFrame.addWindowListener(new WindowAdapter()
+        {
+            @Override
+            public void windowClosing(WindowEvent e)
+            {
+                DBService.dbthreadContinue = false;
+                e.getWindow().dispose();
+            }
+        });
         mainFrame.setSize(width + 50, height + 50);
         mainFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainFrame.setLayout(new FlowLayout());

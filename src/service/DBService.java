@@ -14,30 +14,46 @@ public class DBService {
     private static volatile String connectionStr;
     private static volatile Connection connection;
     public static volatile Statement statement;
-    private static Integer toWrite;
+    public static volatile ArrayList<String> statementList = new ArrayList<String> ();
+    public static volatile Boolean dbthreadContinue;
     public static String datePattern = "dd-MM-yyyy";
-    private static synchronized void increaseToWrite()
-    {
-        toWrite++;
-    }
-    private  static synchronized void decreseToWrite()
-    {
-        toWrite--;
-    }
-    public static void waitConditions()
-    {
-        while(statement == null || toWrite > 0)
-        {
 
+    public static void statementDaemonFnc()
+    {
+        while(true)
+        {
+            if(!statementList.isEmpty() && statement!=null)
+            {
+                String strStatemt = statementList.get(0);
+                statementList.remove(0);
+                try {
+                    statement.execute(strStatemt);
+                }
+                catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            else
+            {
+                if(statementList.isEmpty() && !dbthreadContinue)
+                {
+                    break;
+                }
+            }
         }
     }
+    public static void addStatement(String strStatament)
+    {
+        statementList.add(strStatament);
+    }
+
     public static void init() {
         statement = null;
-        toWrite = 0;
+        dbthreadContinue = true;
         Thread dbThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                increaseToWrite();
                 while(DBService.statement == null) {
                     try {
                         DBService.connectionStr = "jdbc:mysql://localhost:3306/agenda?allowPublicKeyRetrieval=true&useSSL=false&serverTimezone=UTC";
@@ -48,72 +64,32 @@ public class DBService {
                         e.printStackTrace();
                     }
                 }
-            decreseToWrite();
             }
         });
         dbThread.start();
+        Thread daemonThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                statementDaemonFnc();
+            }
+        });
+        daemonThread.start();
     }
 
     public static void createTable(String tableName, String fields)
     {
-        waitConditions();
-        Thread dbThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                increaseToWrite();
-                try {
-                    String strStatement = "create table " + tableName + fields + ";";
-                    statement.execute(strStatement);
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
-                decreseToWrite();
-            }
-        });
+        String strStatement = "create table " + tableName + fields + ";";
+        addStatement(strStatement);
     }
     public static void dropTable(String tableName)
     {
-        waitConditions();
-        Thread dbThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                increaseToWrite();
-                try {
-                    String strStatement = "drop table " + tableName + ";";
-                    statement.execute(strStatement);
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
-                decreseToWrite();
-            }
-        });
-        dbThread.start();
+        String strStatement = "drop table " + tableName + ";";
+        addStatement(strStatement);
     }
     public static void deleteRow(String tableName, String task_id)
     {
-        waitConditions();
-        Thread dbThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                increaseToWrite();
-                try {
-                    String strStatement = "delete from " + tableName +
-                            " where task_id = '" + task_id + "';";
-                    statement.execute(strStatement);
-                }
-                catch(Exception e)
-                {
-                    e.printStackTrace();
-                }
-                decreseToWrite();
-            }
-
-        });
-        dbThread.start();
+        String strStatement = "delete from " + tableName + " where task_id = '" + task_id + "';";
+        addStatement(strStatement);
     }
     public static void createExamTable(String tableName)
     {
@@ -141,11 +117,6 @@ public class DBService {
     }
     public static void addTaskToTable(String tableName, Task task, String taskType)
     {
-        waitConditions();
-        Thread dbthread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                increaseToWrite();
                 String fields = "";
                 switch(taskType)
                 {
@@ -180,24 +151,14 @@ public class DBService {
 
                 }
                 String strStatement = "Insert into " + tableName + " " + fields;
-                try {
-                    statement.execute(strStatement);
-                }
-                catch (Exception e)
-                {
-                    e.printStackTrace();
-                }
-            decreseToWrite();
-            }
-        });
-        dbthread.start();
+                addStatement(strStatement);
     }
     public static ArrayList<Task> readTasks(String tableName, String taskType)
     {
-        if(DBService.statement == null)
-            System.out.println("ESE");
-        waitConditions();
+        while(!statementList.isEmpty() || statement == null)
+        {
 
+        }
         ArrayList<Task> tasks = new ArrayList<Task>();
         try {
             String strStatement = "select * from " + tableName;
@@ -267,47 +228,35 @@ public class DBService {
         return tasks;
     }
     public static void resetTable(String tableName) {
-        try {
-            statement.execute("Delete from " + tableName);
-        }
-        catch (Exception e)
-        {
-            e.printStackTrace();
-        }
+        addStatement("Delete from " + tableName);
     }
     public static void rewriteDB()
     {
-        Thread dbThread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String [] tables = {"Appointment_tasks", "Course_tasks", "Exam_tasks", "Meeting_tasks"};
-                for(String table:tables)
-                {
-                    resetTable(table);
-                }
-                List<Task> newTasks = AgendaService.getAgenda().getTasks();
-                for(Task task:newTasks)
-                {
-                    if(task instanceof AppointmentTask)
-                    {
-                        DBService.addTaskToTable("Appointment_tasks", task, "AppointmentTask");
-                    }
-                    if(task instanceof CourseTask)
-                    {
-                        DBService.addTaskToTable("Course_tasks", task, "CourseTask");
-                    }
-                    if(task instanceof ExamTask)
-                    {
-                        DBService.addTaskToTable("Exam_tasks", task, "ExamTask");
-                    }
-                    if(task instanceof MeetingTask)
-                    {
-                        DBService.addTaskToTable("Meeting_tasks", task, "MeetingTask");
-                    }
-                }
+        String [] tables = {"Appointment_tasks", "Course_tasks", "Exam_tasks", "Meeting_tasks"};
+        for(String table:tables)
+        {
+            resetTable(table);
+        }
+        List<Task> newTasks = AgendaService.getAgenda().getTasks();
+        for(Task task:newTasks)
+        {
+            if(task instanceof AppointmentTask)
+            {
+                DBService.addTaskToTable("Appointment_tasks", task, "AppointmentTask");
             }
-        });
-        dbThread.start();
+            if(task instanceof CourseTask)
+            {
+                DBService.addTaskToTable("Course_tasks", task, "CourseTask");
+            }
+            if(task instanceof ExamTask)
+            {
+                DBService.addTaskToTable("Exam_tasks", task, "ExamTask");
+            }
+            if(task instanceof MeetingTask)
+            {
+                DBService.addTaskToTable("Meeting_tasks", task, "MeetingTask");
+            }
+        }
     }
 
 }

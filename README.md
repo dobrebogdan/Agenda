@@ -17,5 +17,6 @@ There are three major services:
 
 * DBService - used for DB operations(connect, update, create, dele etc)
 
+## Requirements 
 
-The project requires MySQL server.
+* The project requires MySQL server.

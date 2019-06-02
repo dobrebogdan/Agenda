@@ -16,4 +16,6 @@ There are three major services:
 * AgendaService - used for agenda operations
 
 * DBService - used for DB operations(connect, update, create, dele etc)
+
+
 The project requires MySQL server.
